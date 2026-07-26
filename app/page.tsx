@@ -1,2 +1,5 @@
 import MarketOverview from "@/components/MarketOverview";
-export default function Page() { return <MarketOverview />; }
+import Sentiment from "@/components/Sentiment";
+export default function Page() {
+  return (<><MarketOverview /><Sentiment /></>);
+}

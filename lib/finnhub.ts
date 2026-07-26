@@ -28,3 +28,6 @@ export async function mapLimit<T, R>(items: T[], limit: number, fn: (t: T) => Pr
   });
   await Promise.all(workers); return out;
 }
+
+export type RawNews = { datetime: number; headline: string; source: string; summary?: string; url: string }[];
+export const getGeneralNews = () => fh<RawNews>(`/news?category=general`, 300);
