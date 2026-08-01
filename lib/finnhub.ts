@@ -1,5 +1,4 @@
-/* Server-only Finnhub client. Key read from env, never sent to the browser.
-   Fails soft (returns null) so the app can fall back to labeled sample data. */
+/* Server-only Finnhub client. Key read from env, never sent to the browser. */
 const BASE = "https://finnhub.io/api/v1";
 const KEY = process.env.FINNHUB_API_KEY;
 export function hasKey(): boolean { return typeof KEY === "string" && KEY.length > 0; }
