@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: "Market Radar — Live Market Overview",
   description: "Real-time equity overview: live YTD sector performance, a stock heatmap, and top performers by sector and size. Built by Dare Bamidele.",
 };
-const PORTFOLIO_URL = "../index.html"; // set to your live portfolio URL after deploy
+const PORTFOLIO_URL = "https://darebamidele.netlify.app/";
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (

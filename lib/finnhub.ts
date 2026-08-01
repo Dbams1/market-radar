@@ -31,3 +31,7 @@ export async function mapLimit<T, R>(items: T[], limit: number, fn: (t: T) => Pr
 
 export type RawNews = { datetime: number; headline: string; source: string; summary?: string; url: string }[];
 export const getGeneralNews = () => fh<RawNews>(`/news?category=general`, 300);
+
+export type QuoteResp = { c?: number; dp?: number } | null;
+export const getQuote = (symbol: string) =>
+  fh<QuoteResp>(`/quote?symbol=${encodeURIComponent(symbol)}`, 180);
