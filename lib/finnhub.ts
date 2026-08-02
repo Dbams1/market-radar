@@ -1,4 +1,5 @@
-/* Server-only Finnhub client. Key read from env, never sent to the browser. */
+/* Server-only Finnhub client. Key read from env, never sent to the browser.
+   Fails soft (returns null) so the app can fall back to labeled sample data. */
 const BASE = "https://finnhub.io/api/v1";
 const KEY = process.env.FINNHUB_API_KEY;
 export function hasKey(): boolean { return typeof KEY === "string" && KEY.length > 0; }
@@ -34,3 +35,15 @@ export const getGeneralNews = () => fh<RawNews>(`/news?category=general`, 300);
 export type QuoteResp = { c?: number; dp?: number } | null;
 export const getQuote = (symbol: string) =>
   fh<QuoteResp>(`/quote?symbol=${encodeURIComponent(symbol)}`, 180);
+
+export type CompanyNews = { datetime: number; headline: string; summary?: string }[];
+export function getCompanyNews(symbol: string, days = 21) {
+  const to = new Date(); const from = new Date(Date.now() - days * 864e5);
+  const fmt = (d: Date) => d.toISOString().slice(0, 10);
+  return fh<CompanyNews>(`/company-news?symbol=${encodeURIComponent(symbol)}&from=${fmt(from)}&to=${fmt(to)}`, 1800);
+}
+export type RecTrend = { buy: number; hold: number; sell: number; strongBuy: number; strongSell: number; period: string }[];
+export const getRecommendation = (symbol: string) =>
+  fh<RecTrend>(`/stock/recommendation?symbol=${encodeURIComponent(symbol)}`, 3600);
+
+export const getForexNews = () => fh<RawNews>(`/news?category=forex`, 300);

@@ -5,14 +5,14 @@ const POS: Record<string, number> = {
   surge:2,surges:2,soar:2,soars:2,rally:2,rallies:2,jump:1.5,jumps:1.5,gain:1,gains:1,rise:1,rises:1,
   rebound:1.5,beat:1.5,beats:1.5,record:1.5,high:1,highs:1,upgrade:1.5,upgraded:1.5,growth:1,strong:1.5,
   bullish:2,optimistic:1.5,outperform:1.5,profit:1,profits:1,boost:1.5,boosts:1.5,tops:1.5,climbs:1.5,
-  demand:0.8,momentum:1,recovery:1.2,wins:1,approval:1,
+  demand:0.8,momentum:1,recovery:1.2,wins:1,approval:1,dovish:1.5,stimulus:1.2,resilient:1.2,expansion:1,eases:1,cooling:1.2,cools:1.2,softens:0.8,ceasefire:1.5,truce:1.2,deal:0.8,steady:0.5,
 };
 const NEG: Record<string, number> = {
   plunge:2,plunges:2,slump:2,slumps:2,crash:2.5,crashes:2.5,tumble:2,tumbles:2,drop:1.5,drops:1.5,
   fall:1,falls:1,fell:1,sink:1.5,sinks:1.5,loss:1.5,losses:1.5,miss:1.5,misses:1.5,cut:1,cuts:1,
   downgrade:1.5,downgraded:1.5,weak:1.5,bearish:2,recession:2,fear:1.5,fears:1.5,selloff:2,warning:1.5,
   warns:1.5,layoffs:1.5,lawsuit:1,probe:1,decline:1.2,declines:1.2,slowdown:1.5,inflation:0.8,
-  default:1.5,bankruptcy:2.5,slashes:1.5,halts:1.2,
+  default:1.5,bankruptcy:2.5,slashes:1.5,halts:1.2,hawkish:1.5,hike:1,hikes:1,tightening:1.2,sticky:1,tariff:1.2,tariffs:1.2,sanctions:1.2,conflict:1.5,war:1.5,shutdown:1.5,jobless:1.2,deficit:1,crisis:2,downturn:1.5,contraction:1.5,
 };
 const NEGATORS = new Set(["no","not","never","without","avoids","avoid"]);
 export function scoreText(text: string): number {
